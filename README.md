@@ -12,10 +12,13 @@
 运行环境要求
 -----
 - Xcode 7 beta2 +
-- ios 8 +
-具体实现
+- ios 8 +  
+
+实现原理
 -----
-运行时可以看到，点击单个图片会弹出一个新的视图控制器，用来展示图片的细节以及相应信息。页面的跳转动画是系统默认的动画,使用方法`func presentViewController(viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?)`进行页面跳转，此方法在`viewController.swift`中负责检测图片点击事件的方法`func didTapImageView(tap: UITapGestureRecognizer)`内进行了调用，我们要做的是用自定义的动画来替换系统默认的动画。
+是这样的，UIKIt是通过代理模式来自定义页面跳转动画,每次运行页面跳转动画时，UIKit都会去检查它的`UIViewControllerTransitioningDelegate`代理中的方法`func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning?`的返回值，如果是nil的话，就会执行系统默认的页面跳转动画，如下图所示:  
+![](https://raw.githubusercontent.com/ShyHornet/Custom-Presentation-Controller-animations/master/Asset/transitionDelegate.png)  
+
 - 默认页面跳转效果  
 ![](https://raw.githubusercontent.com/ShyHornet/Custom-Presentation-Controller-animations/master/Asset/before.gif)  
 
