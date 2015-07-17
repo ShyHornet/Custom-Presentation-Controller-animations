@@ -1,5 +1,5 @@
 #如何自定义视图控制器切换动画
-~此教程工程来自Ray Wendelich的书籍:iOS_Animations_by_Tutorials
+>此教程工程来自Ray Wendelich的书籍:iOS_Animations_by_Tutorials
 
 项目初始运行结果截图
 -----
