@@ -103,10 +103,12 @@ func animationControllerForDismissedController(dismissed: UIViewController!)
 当然啦，现在运行，点击图片，你会发现没有任何反应，因为我们还没有在`popAnimator`中编写任何代码╰(￣▽￣)╮
 ###3.编写动画实现代码
 向`popAnimator`类中添加属性:
+
 ```swift
 let duration = 1.0//决定动画的时间长度
 var presenting = true//判断是跳转还是返回
 var originFrame = CGRect.zeroRect//将放置图片卡的初始大小
 ```
+
 将`transitionDuration()`方法的返回值改为`duration`
 
