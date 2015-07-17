@@ -34,8 +34,8 @@
  
 开始写代码( ⊙ o ⊙ )
 ----
-
-1.首先，新建一个动画类`popAnimator.swift`，用来实现我们的动画逻辑
+1.创建动画类
+首先，新建一个动画类`popAnimator.swift`，用来实现我们的动画逻辑
 ```Swift
 class PopAnimator: NSObject,UIViewControllerAnimatedTransitioning{
 
@@ -56,7 +56,8 @@ func transitionDuration(transitionContext: UIViewControllerContextTransitioning)
   ```
   我们自定义的动画逻辑，主要就在上述方法中实现
 
-2.在视图控制器`ViewController.swift`中实现UIViewControllerTransitioningDelegate,此处用extension方式实现,在类`ViewController`的外面，文件的结尾添加如下代码
+2.实现`UIViewControllerTransitioningDelegate`协议
+在视图控制器`ViewController.swift`中实现UIViewControllerTransitioningDelegate,此处用extension方式实现,在类`ViewController`的外面，文件的结尾添加如下代码
 
 ```Swift
 
@@ -98,4 +99,5 @@ func animationControllerForDismissedController(dismissed: UIViewController!)
 ```
 我们还没有设置返回动画对象，所以返回时的动画还是使用默认的动画，我们先专注于跳转动画的实现，之后再去实现返回动画吧！
 当然啦，现在运行，点击图片，你会发现没有任何反应，因为我们还没有在`popAnimator`中编写任何代码╰(￣▽￣)╮
+3.
 
