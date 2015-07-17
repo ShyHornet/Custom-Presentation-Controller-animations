@@ -24,17 +24,18 @@
 
 所以总结一下，我们要自定义跳转动画的话需要这么几个步骤:
 
- 1. 创建自定义的动画类,并实现`UIViewControllerAnimatedTransitioning`协议
- 2. 让页面跳转的起始视图控制器和终点视图控制器都实现`UIViewControllerTransitioningDelegate`协议
+ ####1. 创建自定义的动画类,并实现`UIViewControllerAnimatedTransitioning`协议
+ ####2. 让页面跳转的起始视图控制器和终点视图控制器都实现`UIViewControllerTransitioningDelegate`代理
  >记得在执行跳转前将`delegate`对象设置为`self`  
 
- 3. 具体实现动画内容，主要在`UIViewControllerAnimatedTransitioning`协议中的`func animateTransition(transitionContext: UIViewControllerContextTransitioning)`方法中实现
+ ####3. 具体实现动画内容，主要在`UIViewControllerAnimatedTransitioning`协议中的`func animateTransition(transitionContext: UIViewControllerContextTransitioning)`方法中实现
  
  so,我们知道了原理，也知道大概实现的步骤了，下面就开始写代码了！
  
 开始写代码( ⊙ o ⊙ )
 ----
-1.创建动画类
+###1.创建动画类  
+
 首先，新建一个动画类`popAnimator.swift`，用来实现我们的动画逻辑
 ```Swift
 class PopAnimator: NSObject,UIViewControllerAnimatedTransitioning{
@@ -56,7 +57,8 @@ func transitionDuration(transitionContext: UIViewControllerContextTransitioning)
   ```
   我们自定义的动画逻辑，主要就在上述方法中实现
 
-2.实现`UIViewControllerTransitioningDelegate`协议
+###2.实现`UIViewControllerTransitioningDelegate`代理 
+
 在视图控制器`ViewController.swift`中实现UIViewControllerTransitioningDelegate,此处用extension方式实现,在类`ViewController`的外面，文件的结尾添加如下代码
 
 ```Swift
@@ -99,5 +101,11 @@ func animationControllerForDismissedController(dismissed: UIViewController!)
 ```
 我们还没有设置返回动画对象，所以返回时的动画还是使用默认的动画，我们先专注于跳转动画的实现，之后再去实现返回动画吧！
 当然啦，现在运行，点击图片，你会发现没有任何反应，因为我们还没有在`popAnimator`中编写任何代码╰(￣▽￣)╮
-3.
+###3.编写动画实现代码
+向`popAnimator`类中添加属性:
+```swift
+let duration = 1.0
+var presenting = true
+var originFrame = CGRect.zeroRect
+```
 
