@@ -104,8 +104,9 @@ func animationControllerForDismissedController(dismissed: UIViewController!)
 ###3.编写动画实现代码
 向`popAnimator`类中添加属性:
 ```swift
-let duration = 1.0
-var presenting = true
-var originFrame = CGRect.zeroRect
+let duration = 1.0//决定动画的时间长度
+var presenting = true//判断是跳转还是返回
+var originFrame = CGRect.zeroRect//将放置图片卡的初始大小
 ```
+将`transitionDuration()`方法的返回值改为`duration`
 
