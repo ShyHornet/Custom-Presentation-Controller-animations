@@ -35,7 +35,9 @@ class PopAnimator: NSObject,UIViewControllerAnimatedTransitioning{
 }
 ```
 2.实现`UIViewControllerAnimatedTransitioning`协议的两个方法
+
 ```Swift
+
 func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) 
 -> NSTimeInterval{
     
@@ -47,8 +49,11 @@ func transitionDuration(transitionContext: UIViewControllerContextTransitioning?
     //添加动画具体实现
     }
 ```
+
 3.在视图控制器中实现UIViewControllerTransitioningDelegate,此处用extension方式实现
+
 ```Swift
+
 extension ViewController: UIViewControllerTransitioningDelegate{
   
    //在显示视图控制器时执行  
@@ -61,10 +66,11 @@ extension ViewController: UIViewControllerTransitioningDelegate{
     return transition
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController)
+   func animationControllerForDismissedController(dismissed: UIViewController)
     -> UIViewControllerAnimatedTransitioning?
     {transition.presenting = false
         return transition
     }
 }
+
 ```
