@@ -34,7 +34,7 @@
 开始写代码( ⊙ o ⊙ )
 ----
 
-1. 首先，新建一个动画类`popAnimator.swift`，用来实现我们的动画逻辑
+1.首先，新建一个动画类`popAnimator.swift`，用来实现我们的动画逻辑
 ```Swift
 class PopAnimator: NSObject,UIViewControllerAnimatedTransitioning{
 
@@ -47,52 +47,39 @@ func transitionDuration(transitionContext: UIViewControllerContextTransitioning)
   return 0
 }
 ```
-动画的时间设置成0只是暂时的(为了消除没有返回值的错误)，之后我们会设置它的具体时间
+>动画的时间设置成0只是暂时的(为了消除没有返回值的错误)，之后我们会设置它的具体时间
 ```Swift
 func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
 }
 ```
-我们自定义的动画逻辑，主要就在这个方法中实现
+我们自定义的动画逻辑，主要就在上述方法中实现
 
-2. 在视图控制器`ViewController.swift`中实现UIViewControllerTransitioningDelegate,此处用extension方式实现,在类`ViewController`的外面，文件的底部添加如下代码
+2.在视图控制器`ViewController.swift`中实现UIViewControllerTransitioningDelegate,此处用extension方式实现,在类`ViewController`的外面，文件的结尾添加如下代码
 
 ```Swift
 
 extension ViewController: UIViewControllerTransitioningDelegate{
-  
-   //在显示视图控制器时执行  
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) 
-    -> UIViewControllerAnimatedTransitioning?
-    {
-        transition.originFrame = selectedImage!.superview!.convertRect(selectedImage!.frame,
-        toView: nil)
-        transition.presenting = true
-        selectedImage!.hidden = true
-        
-        return transition
-    }
-    
-   func animationControllerForDismissedController(dismissed: UIViewController)
-    -> UIViewControllerAnimatedTransitioning?
-    {   transition.presenting = false
-        
-        return transition
-    }
+
 }
 
 ```
-实现`UIViewControllerAnimatedTransitioning`协议的两个方法
-
+>这段代码表明我们的视图控制器要遵循`UIViewControllerTransitioningDelegate`协议。
+找到`didTapImageView()`方法,在调用`presentViewController()`方法之前添加这一行代码:
 ```Swift
-
-func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) 
--> NSTimeInterval{
-    
-    return duration
-        
-    }
-  func animateTransition(transitionContext: UIViewControllerContextTransitioning)
-    {
-    //添加动画具体实现
-    }
+ herbDetails.transitioningDelegate = self
+```
+>`herbDetails`是我们要跳转到的视图控制器,也遵循`UIViewControllerTransitioningDelegate`协议，上述代码将其跳转代理设置为主页面的视图控制器`ViewController`，这样`UIKIt`在每次执行跳转动画时都会向`ViewController`索取一个动画对象,也就是我们下面要具体实现的`PopAnimator`
+然而我们并没有在`ViewController`中实际创建这个对象,所以我们先要创建这个`popAnimator `
+为`ViewController`添加一个属性:
+```Swift
+let transition = PopAnimator()
+```
+在`extension`中添加如下方法:
+```swift
+func animationControllerForPresentedController( presented: UIViewController!,
+presentingController presenting: UIViewController!, sourceController source: UIViewController!) 
+-> UIViewControllerAnimatedTransitioning! 
+{
+   return transition 
+}
 ```
