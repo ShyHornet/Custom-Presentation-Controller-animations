@@ -29,6 +29,10 @@
  2. 创建自定义的动画类,并实现`UIViewControllerAnimatedTransitioning`协议
  3. 具体实现动画内容，主要在`UIViewControllerAnimatedTransitioning`协议中的`func animateTransition(transitionContext: UIViewControllerContextTransitioning)`方法中实现
  
+ so,我们知道了原理，也知道大概实现的步骤了，下面就开始写代码了！
+ 
+开始写代码( ⊙ o ⊙ )
+----
 
 1.创建自定义切换动画类和所需成员变量:
 ```Swift
@@ -64,16 +68,19 @@ extension ViewController: UIViewControllerTransitioningDelegate{
    //在显示视图控制器时执行  
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) 
     -> UIViewControllerAnimatedTransitioning?
-    {transition.originFrame = selectedImage!.superview!.convertRect(selectedImage!.frame,
+    {
+        transition.originFrame = selectedImage!.superview!.convertRect(selectedImage!.frame,
         toView: nil)
         transition.presenting = true
         selectedImage!.hidden = true
-    return transition
+        
+        return transition
     }
     
    func animationControllerForDismissedController(dismissed: UIViewController)
     -> UIViewControllerAnimatedTransitioning?
-    {transition.presenting = false
+    {   transition.presenting = false
+        
         return transition
     }
 }
