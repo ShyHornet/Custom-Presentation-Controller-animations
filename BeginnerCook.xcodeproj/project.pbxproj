@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6ED207801B55F900004A380C /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED2077F1B55F900004A380C /* PopAnimator.swift */; };
 		9CC38A4D1A04DC6A00000B57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC38A4C1A04DC6A00000B57 /* AppDelegate.swift */; };
 		9CC38A4F1A04DC6A00000B57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC38A4E1A04DC6A00000B57 /* ViewController.swift */; };
 		9CC38A521A04DC6A00000B57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CC38A501A04DC6A00000B57 /* Main.storyboard */; };
@@ -18,7 +17,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6ED2077F1B55F900004A380C /* PopAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
 		9CC38A471A04DC6A00000B57 /* BeginnerCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeginnerCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC38A4B1A04DC6A00000B57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CC38A4C1A04DC6A00000B57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,7 +58,6 @@
 		9CC38A491A04DC6A00000B57 /* BeginnerCook */ = {
 			isa = PBXGroup;
 			children = (
-				6ED2077F1B55F900004A380C /* PopAnimator.swift */,
 				9CC38A4E1A04DC6A00000B57 /* ViewController.swift */,
 				9CC38A7B1A04E68000000B57 /* HerbModel.swift */,
 				9CC38A811A0502F300000B57 /* HerbDetailsViewController.swift */,
@@ -156,7 +153,6 @@
 				9CC38A4D1A04DC6A00000B57 /* AppDelegate.swift in Sources */,
 				9CC38A7C1A04E68000000B57 /* HerbModel.swift in Sources */,
 				9CC38A821A0502F300000B57 /* HerbDetailsViewController.swift in Sources */,
-				6ED207801B55F900004A380C /* PopAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
