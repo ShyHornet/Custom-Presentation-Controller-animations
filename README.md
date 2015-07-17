@@ -1,11 +1,13 @@
 #如何自定义视图控制器切换动画
->此教程工程来自Ray Wendelich的书籍:iOS_Animations_by_Tutorials
------
+~此教程工程来自Ray Wendelich的书籍:iOS_Animations_by_Tutorials
+
 项目初始运行结果截图
 -----
-1.主界面
+- 主界面  
+
 ![](https://raw.githubusercontent.com/ShyHornet/Custom-Presentation-Controller-animations/master/Asset/Start-project-1.png)
-2.图片浏览界面
+- 图片浏览界面  
+
 ![](https://raw.githubusercontent.com/ShyHornet/Custom-Presentation-Controller-animations/master/Asset/Start-project-detailViewer.png)
 
 1.创建自定义切换动画类和所需成员变量:
