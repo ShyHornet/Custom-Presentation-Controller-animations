@@ -17,9 +17,17 @@
 
 实现原理
 -----
-是这样的，UIKIt是通过代理模式来自定义页面跳转动画,每次运行页面跳转动画时，UIKit都会去检查它的`UIViewControllerTransitioningDelegate`代理中的方法`func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning?`的返回值，如果是nil的话，就会执行系统默认的页面跳转动画，如下图所示:  
+  是这样的，UIKIt是通过代理模式来自定义页面跳转动画,每次运行页面跳转动画时，UIKit都会去检查它的`UIViewControllerTransitioningDelegate`代理中的方法`func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning?`的返回值，如果是nil的话，就会执行系统默认的页面跳转动画，如下图所示:  
 ![](https://raw.githubusercontent.com/ShyHornet/Custom-Presentation-Controller-animations/master/Asset/transitionDelegate.png)  
-如果返回值是一个`NSObject`,也就是我们将要创建的自定义动画控制器`Animator`,则会执行我们的自定义动画,如下图所示:  
+  如果返回值是一个`NSObject`,也就是我们将要创建的自定义动画控制器`Animator`,则会执行我们的自定义动画,如下图所示:  
+![](https://raw.githubusercontent.com/ShyHornet/Custom-Presentation-Controller-animations/master/Asset/animator.png) 
+
+所以总结一下，我们要自定义跳转动画的话需要这么几个步骤:
+
+ 1. 让页面跳转的起始视图控制器和终点视图控制器都实现`UIViewControllerTransitioningDelegate`协议
+ >记得在执行跳转前将`delegate`对象设置为`self`
+ 2. 创建自定义的动画类,并实现`UIViewControllerAnimatedTransitioning`协议
+ 3. 具体实现动画内容，主要在`UIViewControllerAnimatedTransitioning`协议中的`func animateTransition(transitionContext: UIViewControllerContextTransitioning)`方法中实现
  
 
 1.创建自定义切换动画类和所需成员变量:
