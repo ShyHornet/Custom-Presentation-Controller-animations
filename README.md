@@ -1,14 +1,15 @@
 #如何自定义视图控制器的页面跳转动画
->此教程工程来自`Ray Wendelich`的书籍:iOS_Animations_by_Tutorials
+>此教程工程来自`Ray Wendelich`的书籍`iOS Animations by Tutorials`
 
-项目初始运行结果截图
+项目初始运行结果
 -----
-- 主界面  
 
-![](https://raw.githubusercontent.com/ShyHornet/Custom-Presentation-Controller-animations/master/Asset/Start-project-1.png)
-- 图片浏览界面  
+- 初始项目的页面跳转效果  
+![](https://raw.githubusercontent.com/ShyHornet/Custom-Presentation-Controller-animations/master/Asset/before.gif)  
 
-![](https://raw.githubusercontent.com/ShyHornet/Custom-Presentation-Controller-animations/master/Asset/Start-project-detailViewer.png)
+- 即将实现的自定义页面跳转效果~  
+![](https://raw.githubusercontent.com/ShyHornet/Custom-Presentation-Controller-animations/master/Asset/after.gif) 
+
 运行环境要求
 -----
 - Xcode 7 beta2 +
@@ -18,12 +19,8 @@
 -----
 是这样的，UIKIt是通过代理模式来自定义页面跳转动画,每次运行页面跳转动画时，UIKit都会去检查它的`UIViewControllerTransitioningDelegate`代理中的方法`func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning?`的返回值，如果是nil的话，就会执行系统默认的页面跳转动画，如下图所示:  
 ![](https://raw.githubusercontent.com/ShyHornet/Custom-Presentation-Controller-animations/master/Asset/transitionDelegate.png)  
-
-- 默认页面跳转效果  
-![](https://raw.githubusercontent.com/ShyHornet/Custom-Presentation-Controller-animations/master/Asset/before.gif)  
-
-- 即将实现的自定义页面跳转效果~  
-![](https://raw.githubusercontent.com/ShyHornet/Custom-Presentation-Controller-animations/master/Asset/after.gif)  
+如果返回值是一个`NSObject`,也就是我们将要创建的自定义动画控制器`Animator`,则会执行我们的自定义动画！  
+ 
 
 1.创建自定义切换动画类和所需成员变量:
 ```Swift
